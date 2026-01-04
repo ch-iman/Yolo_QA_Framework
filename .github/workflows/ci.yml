@@ -5,6 +5,9 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  schedule:
+    # Exécution quotidienne à 6h UTC
+    - cron: '0 6 * * *'
 
 jobs:
   # ========================================
@@ -16,15 +19,15 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4  
+      uses: actions/checkout@v3
     
     - name: Setup Python 3.9
-      uses: actions/setup-python@v5  
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
     
-    - name: Cache pip dependencies
-      uses: actions/cache@v4  
+    - name: Cache dependencies
+      uses: actions/cache@v3
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
@@ -35,37 +38,16 @@ jobs:
         pip install -r requirements.txt
         pip install pytest pytest-cov
     
-    - name: Download YOLO model
-      run: |
-        python -c "from ultralytics import YOLO; model = YOLO('yolov8n.pt'); print('Model downloaded')"
-    
-    - name: Create test images
-      run: |
-        python -c "
-        from PIL import Image
-        from pathlib import Path
-        Path('data/images/normal').mkdir(parents=True, exist_ok=True)
-        Path('data/images/edge_cases').mkdir(parents=True, exist_ok=True)
-        img = Image.new('RGB', (640, 480), color='white')
-        img.save('data/images/normal/cats_sofa.jpg')
-        img.save('data/images/normal/image_0.jpg')
-        for i in range(5):
-            img.save(f'data/images/normal/image_{i}.jpg')
-        img.save('data/images/edge_cases/test.jpg')
-        print('Test images created')
-        "
-    
     - name: Run functional tests
       run: |
         pytest tests/test_functional.py -v --cov=src --cov-report=xml
     
     - name: Upload coverage
-      if: always()
-      uses: codecov/codecov-action@v4  
-      continue-on-error: true
+      uses: codecov/codecov-action@v3
       with:
         file: ./coverage.xml
         flags: functional
+        name: functional-coverage
 
   # ========================================
   # JOB 2 : Tests de Performance
@@ -77,10 +59,10 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     
     - name: Setup Python 3.9
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
     
@@ -89,32 +71,15 @@ jobs:
         pip install -r requirements.txt
         pip install pytest psutil py-cpuinfo pytest-benchmark
     
-    - name: Download YOLO model
-      run: |
-        python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"
-    
-    - name: Create test images
-      run: |
-        python -c "
-        from PIL import Image
-        from pathlib import Path
-        Path('data/images/normal').mkdir(parents=True, exist_ok=True)
-        img = Image.new('RGB', (640, 480), color='white')
-        img.save('data/images/normal/cats_sofa.jpg')
-        "
-    
     - name: Run performance tests
       run: |
-        pytest tests/test_performance.py -v --tb=short
+        pytest tests/test_performance.py -v -s --benchmark-only --benchmark-json=benchmark.json
     
     - name: Upload benchmark results
-      if: always()
-      uses: actions/upload-artifact@v4  
+      uses: actions/upload-artifact@v3
       with:
         name: benchmark-results
-        path: |
-          benchmark.json
-          .benchmarks/
+        path: benchmark.json
 
   # ========================================
   # JOB 3 : Tests de Régression
@@ -126,10 +91,10 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     
     - name: Setup Python 3.9
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
     
@@ -138,35 +103,24 @@ jobs:
         pip install -r requirements.txt
         pip install pytest
     
-    - name: Download YOLO model
+    - name: Download baseline (if exists)
+      continue-on-error: true
       run: |
-        python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"
-    
-    - name: Create test images
-      run: |
-        python -c "
-        from PIL import Image
-        from pathlib import Path
-        Path('data/images/normal').mkdir(parents=True, exist_ok=True)
-        img = Image.new('RGB', (640, 480), color='white')
-        for i in range(5):
-            img.save(f'data/images/normal/image_{i}.jpg')
-        "
-    
-    - name: Create baseline if not exists
-      run: |
-        if [ ! -f tests/baseline_metrics.json ]; then
-          echo "Creating initial baseline..."
-          pytest tests/test_regression.py --baseline-save -v || echo "Baseline created"
-        fi
+        # Télécharger baseline depuis artifacts précédents
+        echo "Checking for existing baseline..."
     
     - name: Run regression tests
       run: |
         pytest tests/test_regression.py -v --baseline-compare
     
-    - name: Upload baseline
-      if: always()
-      uses: actions/upload-artifact@v4  
+    - name: Save new baseline (on main branch)
+      if: github.ref == 'refs/heads/main'
+      run: |
+        pytest tests/test_regression.py --baseline-save
+    
+    - name: Upload baseline artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v3
       with:
         name: baseline-metrics
         path: tests/baseline_metrics.json
@@ -178,41 +132,27 @@ jobs:
     name: Générer Rapport QA
     runs-on: ubuntu-latest
     needs: [functional-tests, performance-tests, regression-tests]
-    if: always()
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
-    
-    - name: Setup Python 3.9
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.9'
+      uses: actions/checkout@v3
     
     - name: Download all artifacts
-      uses: actions/download-artifact@v4  
-      continue-on-error: true
-    
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      uses: actions/download-artifact@v3
     
     - name: Generate HTML report
       run: |
-        python scripts/generate_qa_report.py || echo "Report generation skipped"
-      continue-on-error: true
+        python scripts/generate_qa_report.py
     
     - name: Upload report
-      if: always()
-      uses: actions/upload-artifact@v4  
-      continue-on-error: true
+      uses: actions/upload-artifact@v3
       with:
         name: qa-report
         path: reports/
     
     - name: Comment PR with results
       if: github.event_name == 'pull_request'
-      uses: actions/github-script@v7  
+      uses: actions/github-script@v6
       with:
         script: |
           github.rest.issues.createComment({
@@ -221,7 +161,6 @@ jobs:
             repo: context.repo.repo,
             body: ' QA Pipeline terminé ! Consultez les artifacts pour les résultats.'
           })
-
   # ========================================
   # JOB 5 : Notifications
   # ========================================
@@ -232,18 +171,24 @@ jobs:
     if: always()
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - name: Send Slack notification
+      if: failure()
+      uses: 8398a7/action-slack@v3
+      env:
+       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}  
+      with:
+        status: ${{ job.status }}
+        text: ' YOLO QA Pipeline FAILED'
     
     - name: Create GitHub Issue on failure
       if: failure()
-      uses: actions/github-script@v7
+      uses: actions/github-script@v6
       with:
         script: |
           github.rest.issues.create({
             owner: context.repo.owner,
             repo: context.repo.repo,
             title: ' QA Pipeline Failed',
-            body: 'Le pipeline QA a échoué. Vérifiez les logs dans Actions.',
+            body: 'Le pipeline QA a échoué. Vérifiez les logs.',
             labels: ['bug', 'qa']
           })
