@@ -1,0 +1,4 @@
+j'avais avant un code qui contient d'une methode visualize (lorsque j'avais une seule image ) et il enregistre l'image annote dans reports si je veux maintenant changer un peu la fonction visualize dans le code precedent pour qu'il fonctionne un peu de la meme facon mais qui enregistre les images annotees dans le fichier reports mais en separant avec: fichiers : edge_cases_results , one_image_result, normal_results comment je peux le faire 
+
+
+visualize()

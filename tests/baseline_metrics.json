@@ -1,0 +1,11 @@
+{
+  "version": "v1.0.0",
+  "timestamp": "2025-12-31 09:37:46",
+  "metrics": {
+    "avg_latency_ms": 89.56785496557131,
+    "p95_latency_ms": 147.12948999367654,
+    "avg_detections_per_image": 5.4,
+    "total_detections": 27,
+    "num_images": 5
+  }
+}

@@ -1,0 +1,1171 @@
+{
+  "model": "models/yolov8n.pt",
+  "total_images": 25,
+  "total_detections": 79,
+  "avg_inference_time": 0.16064698355538504,
+  "results": [
+    {
+      "image_path": "data\\images\\edge_cases\\blur_cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.7433527708053589,
+          "bbox": [
+            19.187896728515625,
+            55.618865966796875,
+            311.58221435546875,
+            472.1169128417969
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.3637121021747589,
+          "bbox": [
+            342.0479736328125,
+            27.5643310546875,
+            590.6871337890625,
+            372.58563232421875
+          ]
+        }
+      ],
+      "inference_time": 0.17989158630371094,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 2
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\blur_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 54,
+          "class_name": "donut",
+          "confidence": 0.4238283932209015,
+          "bbox": [
+            201.58868408203125,
+            178.07363891601562,
+            257.50341796875,
+            221.50296020507812
+          ]
+        }
+      ],
+      "inference_time": 0.14908432960510254,
+      "image_shape": [
+        230,
+        352,
+        3
+      ],
+      "num_detections": 1
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\blur_person_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.7444460391998291,
+          "bbox": [
+            382.1204833984375,
+            66.98883056640625,
+            501.536376953125,
+            346.08197021484375
+          ]
+        },
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.5798028111457825,
+          "bbox": [
+            345.4976806640625,
+            89.28958892822266,
+            407.35113525390625,
+            301.1036071777344
+          ]
+        },
+        {
+          "class_id": 50,
+          "class_name": "broccoli",
+          "confidence": 0.43748739361763,
+          "bbox": [
+            0.04747772216796875,
+            2.1907196044921875,
+            61.94600296020508,
+            153.0341796875
+          ]
+        },
+        {
+          "class_id": 56,
+          "class_name": "chair",
+          "confidence": 0.3503724932670593,
+          "bbox": [
+            383.4471435546875,
+            178.83444213867188,
+            476.90020751953125,
+            347.6898498535156
+          ]
+        },
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.3023485839366913,
+          "bbox": [
+            532.8690185546875,
+            40.70323181152344,
+            619.1956787109375,
+            186.6334228515625
+          ]
+        }
+      ],
+      "inference_time": 0.21364188194274902,
+      "image_shape": [
+        427,
+        640,
+        3
+      ],
+      "num_detections": 5
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\blur_toilet.jpg",
+      "detections": [
+        {
+          "class_id": 41,
+          "class_name": "cup",
+          "confidence": 0.5246716737747192,
+          "bbox": [
+            351.5997314453125,
+            480.492919921875,
+            427.0,
+            582.90673828125
+          ]
+        },
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.3829736113548279,
+          "bbox": [
+            185.85198974609375,
+            472.0228271484375,
+            291.40283203125,
+            527.5028076171875
+          ]
+        },
+        {
+          "class_id": 41,
+          "class_name": "cup",
+          "confidence": 0.29967212677001953,
+          "bbox": [
+            340.6168212890625,
+            415.63800048828125,
+            426.405517578125,
+            514.1871337890625
+          ]
+        }
+      ],
+      "inference_time": 0.18051362037658691,
+      "image_shape": [
+        640,
+        427,
+        3
+      ],
+      "num_detections": 3
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\blur_washbasin.jpg",
+      "detections": [],
+      "inference_time": 0.15645670890808105,
+      "image_shape": [
+        419,
+        640,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\dark_cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8618483543395996,
+          "bbox": [
+            344.83209228515625,
+            25.100250244140625,
+            640.0,
+            371.376220703125
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8228359222412109,
+          "bbox": [
+            8.7998046875,
+            54.93058776855469,
+            317.65692138671875,
+            459.16864013671875
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.6602816581726074,
+          "bbox": [
+            40.8380126953125,
+            74.31998443603516,
+            176.2060546875,
+            118.73546600341797
+          ]
+        },
+        {
+          "class_id": 57,
+          "class_name": "couch",
+          "confidence": 0.3936217129230499,
+          "bbox": [
+            0.89276123046875,
+            0.9356689453125,
+            638.4609375,
+            480.0
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.36662915349006653,
+          "bbox": [
+            335.0233154296875,
+            77.16593170166016,
+            371.068603515625,
+            186.36233520507812
+          ]
+        }
+      ],
+      "inference_time": 0.15858912467956543,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 5
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\dark_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 72,
+          "class_name": "refrigerator",
+          "confidence": 0.8742642998695374,
+          "bbox": [
+            297.5160827636719,
+            73.06555938720703,
+            351.889404296875,
+            227.24200439453125
+          ]
+        },
+        {
+          "class_id": 69,
+          "class_name": "oven",
+          "confidence": 0.640008807182312,
+          "bbox": [
+            137.8235321044922,
+            125.7883071899414,
+            196.6034698486328,
+            192.80160522460938
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.624711811542511,
+          "bbox": [
+            83.43373107910156,
+            173.0917205810547,
+            295.0091857910156,
+            227.97523498535156
+          ]
+        },
+        {
+          "class_id": 72,
+          "class_name": "refrigerator",
+          "confidence": 0.47038546204566956,
+          "bbox": [
+            45.66859436035156,
+            84.97200775146484,
+            89.57777404785156,
+            167.51702880859375
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.38600602746009827,
+          "bbox": [
+            204.25946044921875,
+            187.85182189941406,
+            219.52032470703125,
+            207.22145080566406
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.3280784487724304,
+          "bbox": [
+            203.79087829589844,
+            178.3968505859375,
+            257.0958251953125,
+            218.0980224609375
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.31345486640930176,
+          "bbox": [
+            231.74465942382812,
+            200.37330627441406,
+            248.36578369140625,
+            217.6601104736328
+          ]
+        },
+        {
+          "class_id": 72,
+          "class_name": "refrigerator",
+          "confidence": 0.2595232129096985,
+          "bbox": [
+            124.4813232421875,
+            91.06454467773438,
+            195.56556701660156,
+            193.81027221679688
+          ]
+        }
+      ],
+      "inference_time": 0.1392958164215088,
+      "image_shape": [
+        230,
+        352,
+        3
+      ],
+      "num_detections": 8
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\dark_person_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.892794132232666,
+          "bbox": [
+            386.362548828125,
+            67.30709838867188,
+            498.90087890625,
+            347.4765625
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.7427119612693787,
+          "bbox": [
+            31.147396087646484,
+            343.2047119140625,
+            99.39421081542969,
+            385.80877685546875
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.7346073389053345,
+          "bbox": [
+            57.78240966796875,
+            288.7684326171875,
+            135.43746948242188,
+            329.37841796875
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.5615139007568359,
+          "bbox": [
+            155.122314453125,
+            168.8054962158203,
+            182.06634521484375,
+            183.66221618652344
+          ]
+        },
+        {
+          "class_id": 41,
+          "class_name": "cup",
+          "confidence": 0.37033841013908386,
+          "bbox": [
+            120.37251281738281,
+            272.9537353515625,
+            142.19761657714844,
+            304.762939453125
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.36114075779914856,
+          "bbox": [
+            0.44720458984375,
+            227.68975830078125,
+            344.1413269042969,
+            422.84576416015625
+          ]
+        },
+        {
+          "class_id": 69,
+          "class_name": "oven",
+          "confidence": 0.34395459294319153,
+          "bbox": [
+            0.0,
+            177.88653564453125,
+            195.33233642578125,
+            296.09869384765625
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.30342230200767517,
+          "bbox": [
+            0.0,
+            302.6107482910156,
+            86.78398132324219,
+            370.6482849121094
+          ]
+        },
+        {
+          "class_id": 58,
+          "class_name": "potted plant",
+          "confidence": 0.2985621988773346,
+          "bbox": [
+            0.0,
+            1.646759033203125,
+            63.87043762207031,
+            151.28775024414062
+          ]
+        },
+        {
+          "class_id": 41,
+          "class_name": "cup",
+          "confidence": 0.26375290751457214,
+          "bbox": [
+            150.78158569335938,
+            268.4636535644531,
+            172.42581176757812,
+            301.6228332519531
+          ]
+        }
+      ],
+      "inference_time": 0.13363361358642578,
+      "image_shape": [
+        427,
+        640,
+        3
+      ],
+      "num_detections": 10
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\dark_toilet.jpg",
+      "detections": [
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.2961750626564026,
+          "bbox": [
+            187.87582397460938,
+            473.7960205078125,
+            289.6863708496094,
+            523.1751708984375
+          ]
+        }
+      ],
+      "inference_time": 0.13173699378967285,
+      "image_shape": [
+        640,
+        427,
+        3
+      ],
+      "num_detections": 1
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\dark_washbasin.jpg",
+      "detections": [
+        {
+          "class_id": 71,
+          "class_name": "sink",
+          "confidence": 0.7827885746955872,
+          "bbox": [
+            89.40555572509766,
+            290.07720947265625,
+            234.04110717773438,
+            367.32000732421875
+          ]
+        }
+      ],
+      "inference_time": 0.1416923999786377,
+      "image_shape": [
+        419,
+        640,
+        3
+      ],
+      "num_detections": 1
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\lowres_cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 16,
+          "class_name": "dog",
+          "confidence": 0.8093162178993225,
+          "bbox": [
+            14.92474365234375,
+            54.657470703125,
+            317.68621826171875,
+            467.70233154296875
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.5779361724853516,
+          "bbox": [
+            40.68182373046875,
+            74.29135131835938,
+            176.27700805664062,
+            117.74522399902344
+          ]
+        },
+        {
+          "class_id": 16,
+          "class_name": "dog",
+          "confidence": 0.47096577286720276,
+          "bbox": [
+            339.64434814453125,
+            25.104736328125,
+            628.8754272460938,
+            397.2519836425781
+          ]
+        }
+      ],
+      "inference_time": 0.13893604278564453,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 3
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\lowres_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 72,
+          "class_name": "refrigerator",
+          "confidence": 0.8583599925041199,
+          "bbox": [
+            296.0852355957031,
+            69.97711181640625,
+            351.9797668457031,
+            227.37570190429688
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.4790578782558441,
+          "bbox": [
+            79.58651733398438,
+            168.98541259765625,
+            296.3621826171875,
+            228.85928344726562
+          ]
+        }
+      ],
+      "inference_time": 0.17702984809875488,
+      "image_shape": [
+        230,
+        352,
+        3
+      ],
+      "num_detections": 2
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\lowres_person_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.7855107188224792,
+          "bbox": [
+            384.96990966796875,
+            69.295166015625,
+            509.657470703125,
+            348.4833984375
+          ]
+        },
+        {
+          "class_id": 39,
+          "class_name": "bottle",
+          "confidence": 0.5883294343948364,
+          "bbox": [
+            230.0865936279297,
+            244.17398071289062,
+            255.47450256347656,
+            300.5151062011719
+          ]
+        },
+        {
+          "class_id": 53,
+          "class_name": "pizza",
+          "confidence": 0.5045117139816284,
+          "bbox": [
+            0.24652862548828125,
+            301.3150329589844,
+            84.98040008544922,
+            347.9405822753906
+          ]
+        },
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.434634268283844,
+          "bbox": [
+            348.3250427246094,
+            94.0361328125,
+            401.5744323730469,
+            308.0729675292969
+          ]
+        },
+        {
+          "class_id": 74,
+          "class_name": "clock",
+          "confidence": 0.41712021827697754,
+          "bbox": [
+            62.2677001953125,
+            65.12576293945312,
+            121.26216125488281,
+            130.3459014892578
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.31392520666122437,
+          "bbox": [
+            79.30914306640625,
+            291.8660888671875,
+            131.66029357910156,
+            326.6661376953125
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.3046063184738159,
+          "bbox": [
+            0.777740478515625,
+            234.662841796875,
+            343.856689453125,
+            421.25738525390625
+          ]
+        },
+        {
+          "class_id": 39,
+          "class_name": "bottle",
+          "confidence": 0.2604905664920807,
+          "bbox": [
+            215.9635009765625,
+            239.60015869140625,
+            234.89398193359375,
+            300.1177978515625
+          ]
+        }
+      ],
+      "inference_time": 0.16875457763671875,
+      "image_shape": [
+        427,
+        640,
+        3
+      ],
+      "num_detections": 8
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\lowres_toilet.jpg",
+      "detections": [],
+      "inference_time": 0.21526789665222168,
+      "image_shape": [
+        640,
+        427,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\lowres_washbasin.jpg",
+      "detections": [],
+      "inference_time": 0.21744585037231445,
+      "image_shape": [
+        419,
+        640,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\noisy_cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.783371090888977,
+          "bbox": [
+            12.43505859375,
+            55.078460693359375,
+            317.75811767578125,
+            388.07928466796875
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.7686619758605957,
+          "bbox": [
+            333.08251953125,
+            25.083465576171875,
+            639.8541259765625,
+            372.6704406738281
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.41883590817451477,
+          "bbox": [
+            40.51936340332031,
+            73.97229766845703,
+            175.23794555664062,
+            117.47200775146484
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.37808045744895935,
+          "bbox": [
+            334.7099609375,
+            77.45906829833984,
+            370.8568115234375,
+            185.05764770507812
+          ]
+        }
+      ],
+      "inference_time": 0.14591765403747559,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 4
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\noisy_kitchen.jpg",
+      "detections": [],
+      "inference_time": 0.14231371879577637,
+      "image_shape": [
+        230,
+        352,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\noisy_person_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.842086911201477,
+          "bbox": [
+            385.2446594238281,
+            68.66510009765625,
+            499.6186218261719,
+            347.2491760253906
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.5249684453010559,
+          "bbox": [
+            58.221866607666016,
+            288.4737854003906,
+            134.41744995117188,
+            328.8371276855469
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.4804142415523529,
+          "bbox": [
+            33.34571838378906,
+            342.2493896484375,
+            99.91352844238281,
+            384.6510009765625
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.42108696699142456,
+          "bbox": [
+            0.524383544921875,
+            234.37950134277344,
+            344.6734313964844,
+            423.0623779296875
+          ]
+        },
+        {
+          "class_id": 41,
+          "class_name": "cup",
+          "confidence": 0.3013858199119568,
+          "bbox": [
+            151.08213806152344,
+            263.6690673828125,
+            171.1627655029297,
+            301.1561279296875
+          ]
+        },
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.27031540870666504,
+          "bbox": [
+            341.7032470703125,
+            80.18610382080078,
+            403.02813720703125,
+            292.10791015625
+          ]
+        }
+      ],
+      "inference_time": 0.14223217964172363,
+      "image_shape": [
+        427,
+        640,
+        3
+      ],
+      "num_detections": 6
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\noisy_toilet.jpg",
+      "detections": [],
+      "inference_time": 0.1670060157775879,
+      "image_shape": [
+        640,
+        427,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\noisy_washbasin.jpg",
+      "detections": [],
+      "inference_time": 0.21065163612365723,
+      "image_shape": [
+        419,
+        640,
+        3
+      ],
+      "num_detections": 0
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\rotated_cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.8677951693534851,
+          "bbox": [
+            11.8341064453125,
+            120.26692199707031,
+            141.18930053710938,
+            191.30430603027344
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8631206154823303,
+          "bbox": [
+            36.438934326171875,
+            72.14407348632812,
+            311.3631591796875,
+            478.2091979980469
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8468296527862549,
+          "bbox": [
+            323.43017578125,
+            0.52435302734375,
+            595.5513305664062,
+            342.2186279296875
+          ]
+        }
+      ],
+      "inference_time": 0.17039275169372559,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 3
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\rotated_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 69,
+          "class_name": "oven",
+          "confidence": 0.6022729873657227,
+          "bbox": [
+            141.74400329589844,
+            125.6212387084961,
+            212.78167724609375,
+            201.28060913085938
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.511486291885376,
+          "bbox": [
+            224.18299865722656,
+            176.35586547851562,
+            240.16409301757812,
+            195.28427124023438
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.4124049246311188,
+          "bbox": [
+            253.6595001220703,
+            180.84725952148438,
+            270.3187255859375,
+            197.98802185058594
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.3432290256023407,
+          "bbox": [
+            233.74246215820312,
+            171.74713134765625,
+            251.0739288330078,
+            185.24066162109375
+          ]
+        },
+        {
+          "class_id": 72,
+          "class_name": "refrigerator",
+          "confidence": 0.3048996925354004,
+          "bbox": [
+            289.7748107910156,
+            30.565685272216797,
+            351.9210205078125,
+            192.50637817382812
+          ]
+        },
+        {
+          "class_id": 49,
+          "class_name": "orange",
+          "confidence": 0.2681615650653839,
+          "bbox": [
+            239.46218872070312,
+            184.4931640625,
+            253.93653869628906,
+            198.89280700683594
+          ]
+        },
+        {
+          "class_id": 60,
+          "class_name": "dining table",
+          "confidence": 0.2602657973766327,
+          "bbox": [
+            140.58102416992188,
+            153.95594787597656,
+            318.9597473144531,
+            228.29339599609375
+          ]
+        }
+      ],
+      "inference_time": 0.13552379608154297,
+      "image_shape": [
+        230,
+        352,
+        3
+      ],
+      "num_detections": 7
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\rotated_person_kitchen.jpg",
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.9046120047569275,
+          "bbox": [
+            373.85565185546875,
+            38.97442626953125,
+            500.53216552734375,
+            320.7061767578125
+          ]
+        },
+        {
+          "class_id": 0,
+          "class_name": "person",
+          "confidence": 0.4181998074054718,
+          "bbox": [
+            0.0,
+            253.97967529296875,
+            89.45481872558594,
+            423.23760986328125
+          ]
+        },
+        {
+          "class_id": 45,
+          "class_name": "bowl",
+          "confidence": 0.34472623467445374,
+          "bbox": [
+            37.807743072509766,
+            126.77444458007812,
+            101.46041870117188,
+            191.60671997070312
+          ]
+        },
+        {
+          "class_id": 69,
+          "class_name": "oven",
+          "confidence": 0.3191419839859009,
+          "bbox": [
+            192.87318420410156,
+            145.27896118164062,
+            370.473388671875,
+            269.025390625
+          ]
+        },
+        {
+          "class_id": 69,
+          "class_name": "oven",
+          "confidence": 0.26018020510673523,
+          "bbox": [
+            8.4166259765625,
+            202.4322509765625,
+            204.05941772460938,
+            360.7645263671875
+          ]
+        }
+      ],
+      "inference_time": 0.15041518211364746,
+      "image_shape": [
+        427,
+        640,
+        3
+      ],
+      "num_detections": 5
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\rotated_toilet.jpg",
+      "detections": [
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.4065955877304077,
+          "bbox": [
+            2.12200927734375,
+            30.95892333984375,
+            147.5028839111328,
+            320.16357421875
+          ]
+        },
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.36387550830841064,
+          "bbox": [
+            400.92730712890625,
+            430.53643798828125,
+            427.0,
+            524.650146484375
+          ]
+        },
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.3071553707122803,
+          "bbox": [
+            232.346435546875,
+            465.98223876953125,
+            335.53704833984375,
+            507.14752197265625
+          ]
+        },
+        {
+          "class_id": 61,
+          "class_name": "toilet",
+          "confidence": 0.3002263903617859,
+          "bbox": [
+            370.3438415527344,
+            370.46527099609375,
+            426.9277038574219,
+            470.32818603515625
+          ]
+        }
+      ],
+      "inference_time": 0.13727140426635742,
+      "image_shape": [
+        640,
+        427,
+        3
+      ],
+      "num_detections": 4
+    },
+    {
+      "image_path": "data\\images\\edge_cases\\rotated_washbasin.jpg",
+      "detections": [
+        {
+          "class_id": 71,
+          "class_name": "sink",
+          "confidence": 0.809533953666687,
+          "bbox": [
+            126.57186889648438,
+            320.22650146484375,
+            268.32257080078125,
+            406.95953369140625
+          ]
+        }
+      ],
+      "inference_time": 0.13988423347473145,
+      "image_shape": [
+        419,
+        640,
+        3
+      ],
+      "num_detections": 1
+    }
+  ]
+}

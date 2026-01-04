@@ -1,0 +1,75 @@
+{
+  "model": "models/yolov8n.pt",
+  "total_images": 1,
+  "total_detections": 5,
+  "avg_inference_time": 0.33127593994140625,
+  "results": [
+    {
+      "image_path": "data/images/normal/cats_sofa.jpg",
+      "detections": [
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8877974152565002,
+          "bbox": [
+            340.683837890625,
+            26.482147216796875,
+            640.0,
+            370.2008056640625
+          ]
+        },
+        {
+          "class_id": 15,
+          "class_name": "cat",
+          "confidence": 0.8249883055686951,
+          "bbox": [
+            11.393585205078125,
+            54.49468994140625,
+            318.8063049316406,
+            471.18975830078125
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.7801071405410767,
+          "bbox": [
+            40.370361328125,
+            74.0189208984375,
+            176.5222625732422,
+            118.65963745117188
+          ]
+        },
+        {
+          "class_id": 57,
+          "class_name": "couch",
+          "confidence": 0.3599492907524109,
+          "bbox": [
+            0.65155029296875,
+            0.0,
+            639.383056640625,
+            480.0
+          ]
+        },
+        {
+          "class_id": 65,
+          "class_name": "remote",
+          "confidence": 0.324309766292572,
+          "bbox": [
+            334.76727294921875,
+            76.8427734375,
+            371.0650634765625,
+            186.07470703125
+          ]
+        }
+      ],
+      "inference_time": 0.33127593994140625,
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "num_detections": 5
+    }
+  ]
+}
