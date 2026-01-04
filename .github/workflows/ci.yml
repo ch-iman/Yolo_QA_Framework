@@ -76,7 +76,7 @@ jobs:
         pytest tests/test_performance.py -v -s --benchmark-only --benchmark-json=benchmark.json
     
     - name: Upload benchmark results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: benchmark-results
         path: benchmark.json
@@ -120,7 +120,7 @@ jobs:
     
     - name: Upload baseline artifact
       if: github.ref == 'refs/heads/main'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: baseline-metrics
         path: tests/baseline_metrics.json
