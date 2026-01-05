@@ -17,7 +17,7 @@ from src.yolo_detector import YOLODetector
 import statistics
 import json
 
-
+@pytest.mark.performance
 class TestLatencyPerformance:
     """Tests de latence détaillés"""
     
@@ -85,7 +85,7 @@ class TestLatencyPerformance:
         # Coefficient de variation < 30% (plus souple)
         assert cv < 30, f"Latence instable (CV={cv:.1f}%)"
 
-
+@pytest.mark.performance
 class TestResourceUsage:
     """Tests de consommation CPU/GPU"""
     
@@ -216,7 +216,7 @@ class TestFPSRealTime:
         print(f"      Batch  : {fps_batch:.1f} FPS")
         print(f"      Speedup: {speedup:.2f}x")
 
-
+@pytest.mark.performance
 class TestModelBenchmarking:
     """Comparaison entre modèles YOLO"""
     
@@ -253,7 +253,7 @@ class TestModelBenchmarking:
         
         assert len(results) > 0, "Aucun modèle n'a pu être testé"
 
-
+@pytest.mark.performance
 class TestSystemInfo:
     """Collecte des informations système"""
     

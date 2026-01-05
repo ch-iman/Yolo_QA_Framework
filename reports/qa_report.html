@@ -40,33 +40,6 @@
             border-bottom: 2px solid #667eea;
             padding-bottom: 10px;
         }
-        .metric {
-            display: inline-block;
-            background: #f8f9fa;
-            padding: 15px 25px;
-            margin: 10px 10px 10px 0;
-            border-radius: 5px;
-            border-left: 4px solid #667eea;
-        }
-        .metric-label {
-            font-size: 0.9em;
-            color: #666;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .metric-value {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #333;
-        }
-        .status-pass {
-            color: #28a745;
-            font-weight: bold;
-        }
-        .status-fail {
-            color: #dc3545;
-            font-weight: bold;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -84,6 +57,18 @@
         tr:hover {
             background: #f5f5f5;
         }
+        .status-pass {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .status-fail {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .status-skipped {
+            color: #ffc107;
+            font-weight: bold;
+        }
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -94,64 +79,42 @@
 </head>
 <body>
     <div class="header">
-        <h1> YOLO QA Report</h1>
-        <p>Rapport généré le 2026-01-03 14:34:41</p>
+        <h1>YOLO QA Report</h1>
+        <p>Rapport généré le 2026-01-05 16:02:50</p>
     </div>
 
     <div class="section">
-        <h2> Métriques Baseline</h2>
-        <p><strong>Version:</strong> v1.0.0</p>
-        <p><strong>Date:</strong> 2025-12-31 09:37:46</p>
-        
-        <div class="metric">
-            <span class="metric-label">Latence Moyenne</span>
-            <span class="metric-value">89.57 ms</span>
-        </div>
-        
-        <div class="metric">
-            <span class="metric-label">P95 Latence</span>
-            <span class="metric-value">147.13 ms</span>
-        </div>
-        
-        <div class="metric">
-            <span class="metric-label">Détections/Image</span>
-            <span class="metric-value">5.40</span>
-        </div>
-        
-        <div class="metric">
-            <span class="metric-label">Total Images</span>
-            <span class="metric-value">5</span>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>✅ Résumé des Tests</h2>
+        <h2>Résumé des Tests</h2>
         <table>
             <tr>
                 <th>Catégorie</th>
                 <th>Status</th>
                 <th>Détails</th>
             </tr>
+
             <tr>
-                <td>Tests Fonctionnels</td>
-                <td><span class="status-pass">✓ PASS</span></td>
-                <td>Tous les tests fonctionnels ont réussi</td>
+                <td>Functional</td>
+                <td><span class="status-pass">PASS</span></td>
+                <td>10 passed / 0 failed / 0 skipped</td>
             </tr>
+
             <tr>
-                <td>Tests de Performance</td>
-                <td><span class="status-pass">✓ PASS</span></td>
-                <td>Latence et FPS dans les limites acceptables</td>
+                <td>Performance</td>
+                <td><span class="status-skipped">SKIPPED</span></td>
+                <td>9 passed / 0 failed / 1 skipped</td>
             </tr>
+
             <tr>
-                <td>Tests de Régression</td>
-                <td><span class="status-pass">✓ PASS</span></td>
-                <td>Aucune régression détectée</td>
+                <td>Regression</td>
+                <td><span class="status-pass">PASS</span></td>
+                <td>5 passed / 0 failed / 0 skipped</td>
             </tr>
+
         </table>
     </div>
-    
+
     <div class="footer">
-        <p> YOLO QA Framework | Généré automatiquement</p>
+        <p>YOLO QA Framework | Généré automatiquement</p>
     </div>
 </body>
 </html>

@@ -16,7 +16,7 @@ from pathlib import Path
 from src.yolo_detector import YOLODetector
 import json
 
-
+@pytest.mark.functional
 class TestSingleImageDetection:
     """Tests sur image unique (basiques)"""
     
@@ -73,7 +73,7 @@ class TestSingleImageDetection:
             assert det['confidence'] >= 0.8, \
                 f"Détection avec confidence {det['confidence']} < 0.8"
 
-
+@pytest.mark.functional
 class TestDatasetDetection:
     """Tests sur dataset complet"""
     
@@ -143,7 +143,7 @@ class TestDatasetDetection:
         print(f"\n   ⏱️  Temps moyen : {avg_time*1000:.2f}ms")
         print(f"   ⏱️  Temps max : {max_time*1000:.2f}ms")
 
-
+@pytest.mark.functional
 class TestDatasetByCategory:
     """Tests de traitement par catégories"""
     
@@ -197,7 +197,7 @@ class TestDatasetByCategory:
             assert degradation <= 50, \
                 f"Dégradation trop importante : {degradation:.1f}%"
 
-
+@pytest.mark.functional
 class TestResultsSaving:
     """Tests de sauvegarde des résultats"""
     

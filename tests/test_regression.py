@@ -20,7 +20,7 @@ import os
 # Chemin du fichier baseline
 BASELINE_FILE = Path("tests/baseline_metrics.json")
 
-
+@pytest.mark.regression
 class BaselineManager:
     """Gestion des métriques baseline"""
     
@@ -109,7 +109,7 @@ def baseline_mode(request):
         'compare': request.config.getoption("--baseline-compare", default=False)
     }
 
-
+@pytest.mark.regression
 class TestRegressionMetrics:
     """Tests de détection de régression"""
     
@@ -248,7 +248,7 @@ class TestRegressionMetrics:
         assert len(unique_results) <= 2, \
             f"Résultats trop incohérents : {unique_results}"
 
-
+@pytest.mark.regression
 class TestVersionComparison:
     """Compare explicitement deux versions de modèles"""
     
@@ -290,7 +290,7 @@ class TestVersionComparison:
         else:
             pytest.skip("Aucun modèle disponible pour comparaison")
 
-
+@pytest.mark.regression
 class TestDegradationDetection:
     """Détecte les dégradations spécifiques"""
     
