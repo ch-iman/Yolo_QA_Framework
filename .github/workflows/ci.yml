@@ -1,4 +1,4 @@
-name: YOLO QA Pipeline
+name: YOLO QA Pipeline - Complet
 
 on:
   push:
@@ -9,33 +9,33 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
+
   # ========================================
   # JOB 1 : Tests Fonctionnels
   # ========================================
   functional-tests:
     name: Tests Fonctionnels
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      - run: |
+      - name: Install dependencies
+        run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-json
-
-      - run: |
-          mkdir -p reports
-          pytest tests/test_functional.py --json=reports/functional_report.json
-
-      - uses: actions/upload-artifact@v4
+          pip install pytest pytest-cov
+      - name: Run functional tests
+        run: |
+          pytest tests/test_functional.py -v --json=reports/functional_report.json
+      - name: Upload functional report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: functional-report
           path: reports/functional_report.json
+          retention-days: 90
 
   # ========================================
   # JOB 2 : Tests de Performance
@@ -44,26 +44,25 @@ jobs:
     name: Tests de Performance
     runs-on: ubuntu-latest
     needs: functional-tests
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      - run: |
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
-          pip install pytest pytest-json psutil py-cpuinfo pytest-benchmark
-
-      - run: |
-          mkdir -p reports
-          pytest tests/test_performance.py --json=reports/performance_report.json
-
-      - uses: actions/upload-artifact@v4
+          pip install pytest psutil py-cpuinfo pytest-benchmark
+      - name: Run performance tests
+        run: |
+          pytest tests/test_performance.py -v --json=reports/performance_report.json
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: performance-report
           path: reports/performance_report.json
+          retention-days: 90
 
   # ========================================
   # JOB 3 : Tests de Régression
@@ -72,26 +71,40 @@ jobs:
     name: Tests de Régression
     runs-on: ubuntu-latest
     needs: functional-tests
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      - run: |
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
-          pip install pytest pytest-json
-
-      - run: |
-          mkdir -p reports
-          pytest tests/test_regression.py --json=reports/regression_report.json
-
-      - uses: actions/upload-artifact@v4
+          pip install pytest
+      - name: Download previous baseline
+        uses: dawidd6/action-download-artifact@v2
+        continue-on-error: true
+        with:
+          workflow: ${{ github.workflow }}
+          name: baseline-metrics
+          path: tests/
+          if_no_artifact_found: warn
+      - name: Run regression tests
+        run: |
+          pytest tests/test_regression.py -v --json=reports/regression_report.json
+      - name: Upload regression report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: regression-report
           path: reports/regression_report.json
+          retention-days: 90
+      - name: Upload baseline artifact
+        if: github.ref == 'refs/heads/main' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-metrics
+          path: tests/baseline_metrics.json
+          retention-days: 90
 
   # ========================================
   # JOB 4 : Tests de Robustesse
@@ -100,44 +113,39 @@ jobs:
     name: Tests de Robustesse
     runs-on: ubuntu-latest
     needs: functional-tests
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      - run: |
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
-          pip install pytest pytest-json
-
-      - run: |
-          mkdir -p reports
-          pytest tests/test_robustness.py --json=reports/robustness_report.json
-
-      - uses: actions/upload-artifact@v4
+          pip install pytest
+      - name: Run robustness tests
+        run: |
+          pytest tests/test_robustness.py -v --json=reports/robustness_report.json
+      - name: Upload robustness report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: robustness-report
           path: reports/robustness_report.json
+          retention-days: 90
 
   # ========================================
-  # JOB 5 : Génération Rapport HTML
+  # JOB 5 : Génération rapport HTML global
   # ========================================
   generate-report:
-    name: Générer Rapport QA HTML
+    name: Générer Rapport QA
     runs-on: ubuntu-latest
     needs: [functional-tests, performance-tests, regression-tests, robustness-tests]
-
+    if: always()
     steps:
       - uses: actions/checkout@v3
-
-      # Télécharger tous les artefacts JSON
-      - uses: actions/download-artifact@v4
-        with:
-          path: reports
-
-      # Fusionner les JSON en un seul pytest_results.json
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        continue-on-error: true
       - name: Fusionner JSON
         run: |
           python - <<EOF
@@ -146,49 +154,54 @@ jobs:
 
           result_files = list(Path("reports").glob("*_report.json"))
           combined = {"tests": []}
-          for f in result_files:
-              data = json.load(f)
-              combined["tests"].extend(data.get("tests", []))
 
-          with open("reports/pytest_results.json", "w") as f:
+          for f in result_files:
+              with open(f, "r", encoding="utf-8") as file:
+                  data = json.load(file)
+                  combined["tests"].extend(data.get("tests", []))
+
+          with open("reports/pytest_results.json", "w", encoding="utf-8") as f:
               json.dump(combined, f, indent=2)
           EOF
-
-      # Générer le rapport HTML
-      - name: Générer QA Report HTML
+      - name: Generate HTML report
         run: |
           python scripts/generate_qa_report.py
-
-      # Upload HTML pour artefact
-      - uses: actions/upload-artifact@v4
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: qa-report
+          name: qa-html-report
           path: reports/qa_report.html
           retention-days: 90
 
   # ========================================
-  # JOB 6 : Publication GitHub Pages
+  # JOB 6 : Notifications Slack / GitHub
   # ========================================
-  publish-report:
-    name: Publier QA Report sur GitHub Pages
+  notify:
+    name: Notifications
     runs-on: ubuntu-latest
-    needs: generate-report
-
+    needs: [functional-tests, performance-tests, regression-tests, robustness-tests]
+    if: failure()
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Download QA Report HTML
-        uses: actions/download-artifact@v4
+      - name: Send Slack notification
+        if: env.SLACK_WEBHOOK_URL != ''
+        uses: 8398a7/action-slack@v3
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          name: qa-report
-          path: docs
-
-      # Déplacer HTML à la racine de docs/
-      - run: mv docs/qa_report.html docs/index.html
-
-      # Publier via GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+          status: ${{ job.status }}
+          text: 'YOLO QA Pipeline FAILED'
+      - name: Create GitHub Issue on failure
+        uses: actions/github-script@v6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'QA Pipeline Failed',
+              body: `Le pipeline QA a échoué lors du commit ${context.sha}.
+              **Workflow:** ${context.workflow}
+              **Run:** ${context.runNumber}
+              Vérifiez les logs pour plus de détails.`,
+              labels: ['bug', 'qa', 'ci-failure']
+            })
