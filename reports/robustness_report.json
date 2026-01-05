@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-01-05T21:38:14.608912",
+  "model": "models/yolov8n.pt",
+  "normal": {
+    "num_images": 5,
+    "total_detections": 27,
+    "avg_detections_per_image": 5.4,
+    "avg_inference_time_ms": 150.30560493469238,
+    "avg_confidence": 0.5565230305548068
+  },
+  "edge_cases": {
+    "num_images": 25,
+    "total_detections": 79,
+    "avg_detections_per_image": 3.16,
+    "avg_inference_time_ms": 143.85666847229004,
+    "avg_confidence": 0.5039843588690215
+  },
+  "robustness_metrics": {
+    "retention_rate_pct": 58.51851851851851,
+    "degradation_pct": 41.48148148148149,
+    "latency_increase_pct": -4.290549554159607,
+    "confidence_drop_pct": 9.440520661545426
+  }
+}

@@ -1,12 +1,9 @@
 """
-Générateur de Rapport QA - Version support skipped
-==================================================
+Générateur de Rapport QA - Version support skipped + Robustness
+===============================================================
 
-Génère un rapport HTML complet des tests YOLO, en prenant en compte
-les tests passés, échoués et ignorés (skipped).
-
-Usage:
-    python scripts/generate_qa_report.py
+Génère un rapport HTML complet des tests YOLO, incluant les tests
+passés, échoués et ignorés (skipped), ainsi que les tests de robustesse.
 """
 
 import json
@@ -31,15 +28,20 @@ def load_test_results():
     results_by_category = {
         "functional": {"passed": 0, "failed": 0, "skipped": 0},
         "performance": {"passed": 0, "failed": 0, "skipped": 0},
-        "regression": {"passed": 0, "failed": 0, "skipped": 0}
+        "regression": {"passed": 0, "failed": 0, "skipped": 0},
+        "robustness": {"passed": 0, "failed": 0, "skipped": 0}  # <- ajout
     }
 
     # Parcourir tous les tests
     for test in data.get("tests", []):
         markers = test.get("nodeid", "")
-        category = "functional" if "test_functional" in markers else \
-                   "performance" if "test_performance" in markers else \
-                   "regression" if "test_regression" in markers else None
+        category = (
+            "functional" if "test_functional" in markers else
+            "performance" if "test_performance" in markers else
+            "regression" if "test_regression" in markers else
+            "robustness" if "test_robustness" in markers else
+            None
+        )
         
         if category:
             outcome = test.get("outcome")
