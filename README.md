@@ -82,10 +82,10 @@ pytest --html=reports/report.html
 
 ## 🏗️ Architecture 
 
-```
+
 <img width="1268" height="678" alt="image" src="https://github.com/user-attachments/assets/d21d96a2-1d71-470f-ba64-f6fde4fca8f9" />
 
-```
+
 
 ---
 
