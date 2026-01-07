@@ -3,9 +3,7 @@
 # Framework de Test QA Automatisé pour Modèles YOLO
 
 <div align="center">
-<img width="947" height="475" alt="report" src="https://github.com/user-attachments/assets/7229ff7c-15e1-4917-8a0f-b544b7996937" />
 
-<img width="953" height="446" alt="image" src="https://github.com/user-attachments/assets/5e5b9ee4-6ca4-4cb1-a86e-1ad96e7343bd" />
 
 **De la validation laboratoire à la certification industrielle**
 
@@ -43,6 +41,9 @@ Un modèle YOLO avec **95% de mAP en laboratoire** peut échouer en production. 
 | Flou (σ=3) | 87.4% | -8.2% | ✅ |
 | Bruit (σ=25) | 91.1% | -4.3% | ✅ |
 | JPEG Q=30 | 89.7% | -5.8% | ✅ |
+<img width="947" height="475" alt="report" src="https://github.com/user-attachments/assets/7229ff7c-15e1-4917-8a0f-b544b7996937" />
+
+<img width="953" height="446" alt="image" src="https://github.com/user-attachments/assets/5e5b9ee4-6ca4-4cb1-a86e-1ad96e7343bd" />
 
 ---
 
